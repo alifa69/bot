@@ -154,13 +154,8 @@ async def check_bots():
         if not bot or not bdata:
             break
         bot_stats.setdefault(bot, {})
-        bot_stats[bot]['bot_uname'] = bdata['bot_uname']
-        bot_stats[bot]['host'] = bdata['host']
+        bot_stats[bot]['bot_uname'] = bdata['bot_uname']        
         pre_time = time()
-        if bdata.get('base_url_of_bot'):
-            resp = rget(f"{bdata['base_url_of_bot']}/status")
-            if resp.status_code == 200:
-                bot_stats[bot]["status_data"] = resp.json()
         try:
             sent_msg = await client.send_message(bdata['bot_uname'], "/start")
             await sleep(10)
@@ -191,13 +186,9 @@ async def check_bots():
 
     end_time = time()
     log.info("Completed periodic checks.")
-
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
     for bot in bot_stats.keys():
-        status_message += f"🤖 - {await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}\n\n"
-        
-
-
+        status_message += f"🤖 - **{await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}**\n\n"
     total_time = end_time - start_time
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
     time = datetime.now(timezone(TIME_ZONE))
