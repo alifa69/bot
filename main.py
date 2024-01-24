@@ -193,8 +193,8 @@ async def check_bots():
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
     tim = datetime.now(timezone(TIME_ZONE))
     date = tim.strftime("%d %b %Y")
-    time = tim.strftime("%I:%M: %p")    
-    status_message += f"\n--Last checked on--: \n{date}\n{time} ({TIME_ZONE})\n\n**Refreshes Automatically After Every 5 Min.**"
+    time2 = tim.strftime("%I:%M: %p")    
+    status_message += f"\n--Last checked on--: \n{date}\n{time2} ({TIME_ZONE})\n\n**Refreshes Automatically After Every 5 Min.**"
     await editStatusMsg(status_message)
 
 async def main():
