@@ -61,7 +61,6 @@ except Exception as e:
     exit(1)
 
 HEADER_MSG = getenv("HEADER_MSG", "**--❤️ Our Bot Status ❤️--**")
-FOOTER_MSG = getenv("FOOTER_MSG", "")
 TIME_ZONE = getenv("TIME_ZONE", "Asia/Kolkata")
 
 log.info("Connecting pyroBotClient")
@@ -196,26 +195,6 @@ async def check_bots():
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
     for bot in bot_stats.keys():
         status_message += f"┌ **Bot :** {await bot_info(bot_stats[bot]['bot_uname'])}\n├ **Username :** {bot_stats[bot]['bot_uname']}\n"
-        if (stdata := bot_stats[bot].get('status_data')):
-            try:
-                status_message += f'├ **Commit Date :** {stdata["commit_date"]}\n'
-            except:
-                pass
-            try:
-                status_message += f'├ **Bot Uptime :** {get_readable_time(stdata["on_time"])}\n'
-            except:
-                pass
-            try:
-                status_message += f'├ **Alive :** {get_readable_time(stdata["uptime"])}\n'
-            except:
-                pass
-            try:
-                status_message += f'├ **Upload Stats :** {get_readable_size(stdata["network"]["sent"])} '
-                status_message += f'| **Download Stats :** {get_readable_size(stdata["network"]["recv"])}\n'
-                status_message += f'├ **Disk Free :** {get_readable_size(stdata["free_disk"])} / {get_readable_size(stdata["total_disk"])}\n'
-            except Exception as e:
-                log.error(str(e))
-                status_message += '├ **Something went Wrong!**\n'
         
         if bot_stats[bot].get("response_time"):
             status_message += f"├ **Ping :** {bot_stats[bot]['response_time']}\n"
