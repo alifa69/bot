@@ -196,9 +196,8 @@ async def check_bots():
     for bot in bot_stats.keys():
         status_message += f"┌ **Bot :** {await bot_info(bot_stats[bot]['bot_uname'])}\n"
         
-        status_message += f"""├ **Status :** {bot_stats[bot]['status']}
-└ **Host :** {bot_stats[bot]['host']}
-            
+        status_message += f"""
+└ **Status :** {bot_stats[bot]['status']}
 """
 
     total_time = end_time - start_time
