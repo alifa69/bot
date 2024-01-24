@@ -194,25 +194,21 @@ async def check_bots():
 
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
     for bot in bot_stats.keys():
-        status_message += f"┌ **Bot :** {await bot_info(bot_stats[bot]['bot_uname'])}\n├ **Username :** {bot_stats[bot]['bot_uname']}\n"
+        status_message += f"┌ **Bot :** {await bot_info(bot_stats[bot]['bot_uname'])}\n"
         
-        if bot_stats[bot].get("response_time"):
-            status_message += f"├ **Ping :** {bot_stats[bot]['response_time']}\n"
         status_message += f"""├ **Status :** {bot_stats[bot]['status']}
 └ **Host :** {bot_stats[bot]['host']}
             
 """
 
     total_time = end_time - start_time
-    status_message += f"• **Last Periodic Checked in {round(total_time, 2)}s**\n\n"
-    
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
     status_message += f"""• **Last Check Details :**
 ┌ **Time :** `{current_time.strftime('%H:%M:%S')} hrs`
 ├ **Date :** `{current_time.strftime('%d %B %Y')}`
 └ **Time Zone :** `{TIME_ZONE} (UTC {current_time.strftime('%z')})`
 
-__• Auto Status Update in 5 mins Interval__
+__• Auto Status Update in 5 min Interval__
 
 """
     await editStatusMsg(status_message)
