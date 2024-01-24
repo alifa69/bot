@@ -60,8 +60,8 @@ except Exception as e:
     log.error("Error: config.json is not valid")
     exit(1)
 
-HEADER_MSG = getenv("HEADER_MSG", "**Telegram Bot Status :**")
-FOOTER_MSG = getenv("FOOTER_MSG", "_Join FZX Paradox at @FZXParadox_\n**Repo :** __https://github.com/SilentDemonSD/TgBotStatus__")
+HEADER_MSG = getenv("HEADER_MSG", "**--❤️ Our Bot Status ❤️--**")
+FOOTER_MSG = getenv("FOOTER_MSG", "")
 TIME_ZONE = getenv("TIME_ZONE", "Asia/Kolkata")
 
 log.info("Connecting pyroBotClient")
@@ -139,7 +139,7 @@ async def check_bots():
     totalBotsCount = len(bots.keys())
     log.info("Starting Periodic Bot Status checks...")
     
-    header_msg = f"__**{HEADER_MSG}**__\n\n"
+    header_msg = f"{HEADER_MSG}\n\n"
     status_message = header_msg + """• **Avaliable Bots :** __Checking...__
 
 • `Currently Ongoing Periodic Check`
@@ -235,7 +235,7 @@ async def check_bots():
 
 __• Auto Status Update in 5 mins Interval__
 
-{FOOTER_MSG}"""
+"""
     await editStatusMsg(status_message)
 
 async def main():
