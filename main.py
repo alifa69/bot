@@ -194,11 +194,9 @@ async def check_bots():
 
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
     for bot in bot_stats.keys():
-        status_message += f"┌ **Bot :** {await bot_info(bot_stats[bot]['bot_uname'])}\n"
+        status_message += f"🤖 - {await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}"
         
-        status_message += f"""
-└ **Status :** {bot_stats[bot]['status']}
-"""
+
 
     total_time = end_time - start_time
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
