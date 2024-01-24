@@ -191,9 +191,9 @@ async def check_bots():
         status_message += f"🤖 - **{await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}**\n\n"
     total_time = end_time - start_time
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
-    time = datetime.now(timezone(TIME_ZONE))
-    date = time.strftime("%d %b %Y")
-    time = time.strftime("%I:%M: %p")    
+    tim = datetime.now(timezone(TIME_ZONE))
+    date = tim.strftime("%d %b %Y")
+    time = tim.strftime("%I:%M: %p")    
     status_message += f"\n--Last checked on--: \n{date}\n{time} ({TIME_ZONE})\n\n**Refreshes Automatically After Every 5 Min.**"
     await editStatusMsg(status_message)
 
