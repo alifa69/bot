@@ -140,14 +140,8 @@ async def check_bots():
     
     header_msg = f"{HEADER_MSG}\n\n"
     status_message = header_msg + """• **Avaliable Bots :** __Checking...__
-
-• `Currently Ongoing Periodic Check`
-
 """
-    await editStatusMsg(status_message + f"""**• Status Update Stats:**
-┌ **Bots Verified :** 0 out of {totalBotsCount}
-├ **Progress :** [○○○○○○○○○○] 0%
-└ **Time Elasped :** 0s""")
+    await editStatusMsg(status_message)
 
     bot_no, avl_bots = 0, 0
     for bot, bdata in bots.items():
