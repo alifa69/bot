@@ -173,10 +173,10 @@ async def check_bots():
         log.info(f"Checked {bdata['bot_uname']} & Status : {bot_stats[bot]['status']}.")
         bot_no += 1
         
-        await editStatusMsg(status_message + f"""**Status Update Stats:**
-┌ **Bots Checked :** {bot_no} out of {totalBotsCount}
-├ **Progress :** {progress_bar(bot_no, totalBotsCount)}
-└ **Time Elasped :** {get_readable_time(time() - start_time)}""")
+        header_msg = f"{HEADER_MSG}\n\n"
+        status_message = header_msg + """• **Avaliable Bots :** __Checking...__
+"""
+        await editStatusMsg(status_message)
 
     end_time = time()
     log.info("Completed periodic checks.")
