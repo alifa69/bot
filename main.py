@@ -139,7 +139,7 @@ async def check_bots():
     log.info("Starting Periodic Bot Status checks...")
     
     header_msg = f"{HEADER_MSG}\n\n"
-    status_message = header_msg + """• **Avaliable Bots :** __Checking...__
+    status_message = header_msg + """• **Avaliable Bots :** __Checking__
 """
     await editStatusMsg(status_message)
 
@@ -174,7 +174,7 @@ async def check_bots():
         bot_no += 1
         
         header_msg = f"{HEADER_MSG}\n\n"
-        status_message = header_msg + """• **Avaliable Bots :** __Checking...__
+        status_message = header_msg + """• **Avaliable Bots :** __Checking....__
 """
         await editStatusMsg(status_message)
 
