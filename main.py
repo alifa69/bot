@@ -137,12 +137,7 @@ async def check_bots():
     bot_stats = {}
     totalBotsCount = len(bots.keys())
     log.info("Starting Periodic Bot Status checks...")
-    
-    header_msg = f"{HEADER_MSG}\n\n"
-    status_message = header_msg + """• **Avaliable Bots :** __Checking__
-"""
-    await editStatusMsg(status_message)
-
+            
     bot_no, avl_bots = 0, 0
     for bot, bdata in bots.items():
         if not bot or not bdata:
@@ -173,11 +168,7 @@ async def check_bots():
         log.info(f"Checked {bdata['bot_uname']} & Status : {bot_stats[bot]['status']}.")
         bot_no += 1
         
-        header_msg = f"{HEADER_MSG}\n\n"
-        status_message = header_msg + """• **Avaliable Bots :** __Checking....__
-"""
-        await editStatusMsg(status_message)
-
+                
     end_time = time()
     log.info("Completed periodic checks.")
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
