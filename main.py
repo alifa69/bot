@@ -137,7 +137,8 @@ async def check_bots():
     bot_stats = {}
     totalBotsCount = len(bots.keys())
     log.info("Starting Periodic Bot Status checks...")
-            
+
+    header_msg = f"{HEADER_MSG}\n\n"
     bot_no, avl_bots = 0, 0
     for bot, bdata in bots.items():
         if not bot or not bdata:
