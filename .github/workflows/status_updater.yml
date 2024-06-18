@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install --upgrade pip
-          pip install requests python-dotenv pytz pyrofork pyrogram tgcrypto
+          pip install requests python-dotenv pytz pyrofork tgcrypto
       - name: Run the UserClient Script
         run: |
           python3 main.py
