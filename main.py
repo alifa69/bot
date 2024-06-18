@@ -174,7 +174,7 @@ async def check_bots():
     log.info("Completed periodic checks.")
     status_message = header_msg + f"• **Avaliable Bots :** {avl_bots} out of {totalBotsCount}\n\n"
     for bot in bot_stats.keys():
-        status_message += f"🤖 - **{await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}**\n\n"
+        status_message += f"<pre>🤖 - **{await bot_info(bot_stats[bot]['bot_uname'])}: {bot_stats[bot]['status']}**</pre>\n\n"
     total_time = end_time - start_time
     current_time = datetime.now(utc).astimezone(timezone(TIME_ZONE))
     tim = datetime.now(timezone(TIME_ZONE))
