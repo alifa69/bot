@@ -15,10 +15,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: Clone the Repository
-        uses: actions/checkout@master
-        with:
-          repository: ${{ secrets.REPO_NAME }}
+      - name: Create Loop File
+        run: echo "Creating loop.txt" > loop.txt
       - name: Install Dependencies
         run: |
           pip install --upgrade pip
@@ -31,3 +29,4 @@ jobs:
           API_HASH: ${{ secrets.API_HASH }}
           PYRO_SESSION: ${{ secrets.PYRO_SESSION }}
           CONFIG_JSON_URL: ${{ secrets.CONFIG_JSON_URL }}
+          CONFIG_ENV_URL: ${{ secrets.CONFIG_ENV_URL }}
