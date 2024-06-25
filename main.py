@@ -6,13 +6,6 @@ from time import time
 from os import getenv, path as ospath 
 from datetime import datetime
 import os
-import time
-
-def main():
-    while os.path.isfile("loop.txt"):
-        # Your main script logic goes here
-        print("Running main script...")
-        time.sleep(300)  # Sleep for 5 minutes
 
 if __name__ == "__main__":
     main()
