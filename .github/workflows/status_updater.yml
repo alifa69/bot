@@ -1,1 +1,32 @@
-.
+name: Bot Status Check
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize Checkout
+        uses: actions/checkout@v4
+      - name: SetUp Python3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Create Loop File
+        run: echo "Creating loop.txt" > loop.txt
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests python-dotenv pytz pyrofork tgcrypto
+      - name: Run the UserClient Script
+        run: |
+          python3 main.py
+        env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          PYRO_SESSION: ${{ secrets.PYRO_SESSION }}
+          CONFIG_JSON_URL: ${{ secrets.CONFIG_JSON_URL }}
+          CONFIG_ENV_URL: ${{ secrets.CONFIG_ENV_URL }}
